@@ -8,37 +8,54 @@ namespace BlackJack_Main
 {
     internal class Program
     {
-        private static Cards card = new Cards();
+
+        public static int total ;
+        public static int dealerTotal;
         static void Main(string[] args)
         {
             //get 2 player cards
             Random rnd = new Random();
-            int player1 = rnd.Next(1, 22);
-            int player2 = rnd.Next(1, 22);
-            int total = player1 + player2;
-            Console.WriteLine(" Players Card dealt is " + player1);
-            Console.WriteLine(" Players Card dealt is " + player2);
-            Console.WriteLine("total " + total);
+            int player1 = rnd.Next(1, 12);
+            int player2 = rnd.Next(1, 12);
+            total = player1 + player2;
+            Console.WriteLine("Players Card dealt is: " + player1);
+            Console.WriteLine("");
+            Console.WriteLine("Players Card dealt is: " + player2);
+            Console.WriteLine("");
+            Console.WriteLine("Total: " + total);
+            Console.WriteLine("");
+            Check();
+            //if (total == 21)
+            //{
+            //    Console.WriteLine("You win");
+            //    Console.ReadLine();
+            //}
 
 
             //repeat
             bool playAgain = true;
-            //Console.Write("Do you want to play again? (y/n): ");
-            //string input = Console.ReadLine();
-            //if (input.ToLower() != "y")
-            //{
-            //    playAgain = false;
-            //}
+            Console.Write("Do you want another card? (y/n): ");
+            string input = Console.ReadLine();
+            if (input.ToLower() != "y")
+            {
+                playAgain = false;
+            }
 
             while (playAgain)
             {
-                int player3 = rnd.Next(1, 22);
-                Console.WriteLine(" Players Card dealt is " + player3);
+                int player3 = rnd.Next(1, 12);
+                Console.WriteLine("Players Card dealt is " + player3);
                 total += player3;
-                Console.WriteLine("total " + total);
+                Console.WriteLine("Total: " + total);
+                Check();
+                //if (total == 21)
+                //{
+                //    Console.WriteLine("You win");
+                //    Console.ReadLine();
+                //}
 
-                Console.Write("Do you want to play again? (y/n): ");
-                 string input = Console.ReadLine();
+                Console.Write("Do you want another card? (y/n): ");
+                input = Console.ReadLine();
                 if (input.ToLower() != "y")
                 {
                     playAgain = false;
@@ -49,39 +66,57 @@ namespace BlackJack_Main
 
 
             //dealer section
-            int dealer1 = rnd.Next(1, 22);
-            int dealer2 = rnd.Next(1, 22);
-            int dealerTotal = dealer1 + dealer2;
-            Console.WriteLine(" Players Card dealt is " + dealer1);
-            
-            
+            int dealer1 = rnd.Next(1, 12);
+            int dealer2 = rnd.Next(1, 12);
+            dealerTotal = dealer1 + dealer2;
+            Console.WriteLine("Dealers card dealt is " + dealer1);
+            Console.WriteLine("");
+            Console.WriteLine("Dealers card dealt is " + dealer2);
+            Console.WriteLine("");
+            Console.WriteLine("Dealers total: " + dealerTotal);
+            Console.WriteLine("");
+            Check();
+            //if (dealerTotal == 21)
+            //{
+            //    Console.WriteLine("Dealer wins");
+            //    Console.ReadLine();
+            //}
 
-            if (dealer1 >= 17)
+
+
+            while (dealerTotal <= 17)
             {
-                Console.WriteLine(" Players Card dealt is " + dealer2);
-                Console.WriteLine("total " + dealerTotal);
+                int dealer3 = rnd.Next(1, 12);
+                Console.WriteLine("Dealers Card dealt is " + dealer3);
+                dealerTotal += dealer3;
+                Console.WriteLine("Total: " + dealerTotal);
+                
+                
             }
-            else
-            {
-                Console.WriteLine("dealers stays");
-            }
+            Check();
 
             ////compare results
-            //if (total > 21)
+
+            //if (dealerTotal == 21)
             //{
-            //    Console.WriteLine("U lose");
+            //    Console.WriteLine("Dealer wins");
+            //    Console.ReadLine();
             //}
-            //else if (total1 > 21)
+            //if (dealerTotal > 21)
             //{
-            //    Console.WriteLine("dealer lose");
+            //    Console.WriteLine("Dealer busts");
             //}
-            //else if (total > total1)
+            //else if (total > 21)
             //{
-            //    Console.WriteLine("player wins");
+            //    Console.WriteLine("You bust");
             //}
-            //else if (total1 > total)
+            //else if (dealerTotal > total)
             //{
-            //    Console.WriteLine("dealer wins");
+            //    Console.WriteLine("Dealer wins");
+            //}
+            //else if (total > dealerTotal)
+            //{
+            //    Console.WriteLine("You win");
             //}
             //else
             //{
@@ -89,6 +124,40 @@ namespace BlackJack_Main
             //}
 
 
+        }
+        static void Check()
+        {
+            
+            if (total == 21)
+            {
+                Console.WriteLine("You win");
+                Console.ReadLine();
+            }
+            if (dealerTotal == 21)
+            {
+                Console.WriteLine("Dealer wins");
+                Console.ReadLine();
+            }
+            if (dealerTotal > 21)
+            {
+                Console.WriteLine("Dealer busts");
+            }
+            else if (total > 21)
+            {
+                Console.WriteLine("You bust");
+            }
+            else if (dealerTotal > total)
+            {
+                Console.WriteLine("Dealer wins");
+            }
+            else if (total > dealerTotal)
+            {
+                Console.WriteLine("You win");
+            }
+            else
+            {
+                Console.WriteLine("Its a tie");
+            }
         }
 
     }
