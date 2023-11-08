@@ -15,7 +15,7 @@ namespace BlackJack_Main
         public static bool playAgain;
         static void Main(string[] args)
         {
-            
+
             //get 2 player cards
             Random rnd = new Random();
 
@@ -62,27 +62,28 @@ namespace BlackJack_Main
                         anotherCard = false;
                     }
                 }
-
+                Dealer();
+                Check();   
                 //dealer section
-                int dealer1 = rnd.Next(1, 12);
-                int dealer2 = rnd.Next(1, 12);
-                dealerTotal = dealer1 + dealer2;
-                Console.WriteLine("Dealers card dealt is " + dealer1);
-                Console.WriteLine("");
-                Console.WriteLine("Dealers card dealt is " + dealer2);
-                Console.WriteLine("");
-                Console.WriteLine("Dealers total: " + dealerTotal);
-                Console.WriteLine("");
-                Check();
+                //int dealer1 = rnd.Next(1, 12);
+                //int dealer2 = rnd.Next(1, 12);
+                //dealerTotal = dealer1 + dealer2;
+                //Console.WriteLine("Dealers card dealt is " + dealer1);
+                //Console.WriteLine("");
+                //Console.WriteLine("Dealers card dealt is " + dealer2);
+                //Console.WriteLine("");
+                //Console.WriteLine("");
+                //Console.WriteLine("Dealers total: " + dealerTotal);
+                //Check();
 
-                while (dealerTotal <= 17)
-                {
-                    int dealer3 = rnd.Next(1, 12);
-                    Console.WriteLine("Dealers Card dealt is " + dealer3);
-                    dealerTotal += dealer3;
-                    Console.WriteLine("Total: " + dealerTotal);
-                    Check();
-                }
+                //while (dealerTotal <= 17)
+                //{
+                //    int dealer3 = rnd.Next(1, 12);
+                //    Console.WriteLine("Dealers Card dealt is " + dealer3);
+                //    dealerTotal += dealer3;
+                //    Console.WriteLine("Total: " + dealerTotal);
+                //    Check();
+                //}
                 CheckResults();
                 Console.Write("Do you want another go? (y/n): ");
                 input = Console.ReadLine();
@@ -114,6 +115,29 @@ namespace BlackJack_Main
                 {
                     break;
                 }
+            }
+        }
+        static void Dealer()
+        {
+            Random rnd = new Random();
+            int dealer1 = rnd.Next(1, 12);
+            int dealer2 = rnd.Next(1, 12);
+            dealerTotal = dealer1 + dealer2;
+            Console.WriteLine("Dealers card dealt is " + dealer1);
+            Console.WriteLine("");
+            Console.WriteLine("Dealers card dealt is " + dealer2);
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("Dealers total: " + dealerTotal);
+
+
+            while (dealerTotal <= 17)
+            {
+                int dealer3 = rnd.Next(1, 12);
+                Console.WriteLine("Dealers Card dealt is " + dealer3);
+                dealerTotal += dealer3;
+                Console.WriteLine("Total: " + dealerTotal);
+
             }
         }
         static void Check()
