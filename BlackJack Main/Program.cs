@@ -45,13 +45,13 @@ namespace BlackJack_Main
         {
             Random rnd1 = new Random();
             total = 0;
-            while (total <= 21)
+            while (total < 21)
             {
-                int playerCard = rnd1.Next(1, 12);
-                Console.WriteLine("Players Card dealt is " + playerCard);
-                int playerCard2 = rnd1.Next(1, 12);
-                Console.WriteLine("Players Card dealt is " + playerCard2);
-                total = playerCard + playerCard2;
+                int player1 = rnd1.Next(1, 12);
+                Console.WriteLine("Players Card dealt is " + player1);
+                int player2 = rnd1.Next(1, 12);
+                Console.WriteLine("Players Card dealt is " + player2);
+                total = player1 + player2;
                 Console.WriteLine("Total: " + total);
 
                 bool anotherCard = true;
